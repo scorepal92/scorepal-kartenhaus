@@ -1,0 +1,11 @@
+{
+  "name": "ScorePal - Das Kartenhaus",
+  "short_name": "Kartenhaus",
+  "description": "Offline testbare ScorePal Scorekarte fuer Das Kartenhaus.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#697959",
+  "orientation": "portrait"
+}
