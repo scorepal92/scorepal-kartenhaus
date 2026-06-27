@@ -1,4 +1,4 @@
-const CACHE_NAME = "scorepal-kartenhaus-v1";
+const CACHE_NAME = "scorepal-kartenhaus-v7";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",

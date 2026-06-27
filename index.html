@@ -4,11 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ScorePal · Das Kartenhaus</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#697959">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Kartenhaus">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
   :root {
     --black: #000000;
@@ -532,6 +527,20 @@
     margin-top: 2px;
   }
 
+  .special-bonus {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand);
+  }
+
+  .special-result {
+    margin-top: 6px;
+    font-weight: 700;
+    color: var(--field);
+  }
+
   .result-summary {
     text-align: center;
     padding: 8px;
@@ -856,22 +865,307 @@
 
   @media (max-width: 480px) {
     .course-library { grid-template-columns: 1fr; }
-    .course-library-actions { display: grid; grid-template-columns: 1fr 1fr; }
+    .course-library-actions { display: grid; grid-template-columns: 1fr; }
     .course-edit-actions { grid-template-columns: 1fr; }
     .scoreboard { grid-template-columns: repeat(2, 1fr); }
     .brand-title { font-size: 30px; }
     .stroke-input { width: 50px; }
     .hp-name { max-width: 80px; font-size: 13px; }
   }
+
+
+  /* ScorePal shared layout standard */
+  details.rules {
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  details.rules summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  details.rules ul,
+  details.rules ol {
+    padding-left: 20px;
+    margin: 10px 0 0;
+  }
+  details.rules li {
+    font-size: 13px;
+    margin: 5px 0;
+    line-height: 1.35;
+  }
+  header #resetBtn,
+  .header-actions #resetBtn {
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .scoreboard {
+    background: var(--brand);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 16px;
+    gap: 8px;
+  }
+  .score-tile {
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 8px 4px;
+    text-align: center;
+  }
+  .score-name,
+  .score-label {
+    color: inherit;
+  }
+  .score-label {
+    opacity: .82;
+  }
+  .hole-card,
+  .panel,
+  .setup-card,
+  .result-panel,
+  .tracker-panel,
+  .history-panel,
+  .final-panel,
+  .bingo-card {
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--black);
+  }
+  @media (max-width: 640px) {
+    header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .header-actions {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+    header #resetBtn,
+    .header-actions #resetBtn {
+      width: auto;
+      max-width: 100%;
+      padding: 10px 18px;
+      font-size: 13px;
+      min-height: 44px;
+    }
+  }
+
+
+
+  /* ScorePal shared header and status standard */
+  .brand-tag,
+  .brand-kicker {
+    display: block;
+    color: var(--brand);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .brand-title,
+  header h1.brand-title {
+    display: block;
+    font-family: "Bahnschrift Condensed", Bahnschrift, "Arial Narrow", Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  .brand-sub {
+    display: block;
+    color: var(--brand);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .course-status.error,
+  .course-validation.error,
+  .validation-error {
+    color: var(--warning);
+  }
+  .score-label,
+  .score-tile .muted,
+  .score-tile .score-label {
+    color: var(--white);
+    opacity: .9;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .hole-meta,
+  .hole-subline {
+    margin-top: 12px;
+    color: var(--brand);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    line-height: 1.35;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .brand-title,
+    header h1.brand-title {
+      font-size: 34px;
+    }
+    .brand-sub {
+      margin-top: 8px;
+    }
+  }
+
+
+
+  /* ScorePal shared final winner standard */
+  .final-banner {
+    background: var(--black);
+    color: var(--white);
+    padding: 18px;
+    border-radius: 8px;
+    margin: 16px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-banner.complete {
+    background: var(--brand);
+    border: 3px solid var(--black);
+    box-shadow: 5px 5px 0 var(--black);
+  }
+  .final-banner h3 {
+    position: relative;
+    z-index: 1;
+    font-family: "Bahnschrift Condensed", Bahnschrift, "Arial Narrow", Arial, sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .winner-card {
+    position: relative;
+    z-index: 1;
+    margin: 10px auto 0;
+    max-width: 620px;
+    padding: 20px 14px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .winner-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .winner-name,
+  .winner-title {
+    display: block;
+    font-family: "Bahnschrift Condensed", Bahnschrift, "Arial Narrow", Arial, sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--white);
+  }
+  .winner-points {
+    display: block;
+    font-family: "Bahnschrift Condensed", Bahnschrift, "Arial Narrow", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--white);
+  }
+  .fireworks { position: absolute; inset: 0; pointer-events: none; }
+  .firework {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white);
+    box-shadow: 0 -18px 0 var(--white), 13px -13px 0 var(--black), 18px 0 0 var(--white), 13px 13px 0 var(--black), 0 18px 0 var(--white), -13px 13px 0 var(--black), -18px 0 0 var(--white), -13px -13px 0 var(--black);
+    animation: pop 1.4s ease-in-out infinite;
+    opacity: .8;
+  }
+  .firework.one { left: 12%; top: 22%; }
+  .firework.two { right: 13%; top: 18%; animation-delay: .35s; }
+  .firework.three { left: 50%; bottom: 18%; animation-delay: .7s; }
+  @keyframes pop { 0%,100% { transform: scale(.8); opacity:.55; } 50% { transform: scale(1.25); opacity:1; } }
+  @media (max-width: 640px) {
+    .final-banner { padding: 16px 10px; }
+    .final-banner h3 { font-size: 32px; }
+    .winner-name,
+    .winner-title { font-size: 44px; }
+    .winner-points { font-size: 24px; }
+  }
+
+
+
+  /* ScorePal shared hole header separation */
+  .hole-header {
+    align-items: flex-start;
+  }
+  .hole-context {
+    margin-top: -2px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 2px dashed var(--field);
+  }
+  .hole-header + .hole-context {
+    margin-top: -2px;
+  }
+  .hole-header.has-context {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  .hole-context .hole-meta {
+    margin-top: 6px;
+  }
+
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <div class="brand">
-      <span class="brand-tag">ScorePal presents</span>
+      <span class="brand-tag">ScorePal Scoring Board</span>
       <span class="brand-title">Das Kartenhaus</span>
-      <span class="brand-sub">Vegas · 4 Spieler · 18 Löcher</span>
+      <span class="brand-sub">2 Teams · 4 Spieler · 18 Löcher</span>
     </div>
     <div class="header-actions">
       <button class="btn btn-ghost btn-small" id="resetBtn">Neue Runde</button>
@@ -880,14 +1174,16 @@
 
   <details class="rules">
     <summary>So funktioniert's</summary>
-    <ul>
-      <li><strong>Teams pro Loch:</strong> 2 linkeste Bälle vs. 2 rechteste. Pro Spieler "Links" oder "Rechts" wählen.</li>
-      <li><strong>Zweierzahl:</strong> Niedrigerer Score zuerst (4&5 = 45).</li>
-      <li><strong>Punkte:</strong> Differenz der Teamzahlen → ans bessere Team.</li>
-      <li><strong>1 Birdie (oder besser):</strong> Gegnerzahl wird umgedreht.</li>
-      <li><strong>2 Birdies:</strong> Gegnerzahl umgedreht UND Differenz verdoppelt.</li>
-      <li><strong>Loch 17 & 18:</strong> Verlierer nach Loch 16 wählt Multiplikator pro Loch (×1/×2/×3/×4).</li>
-    </ul>
+    <ol>
+      <li><strong>Teams pro Loch:</strong> Nach dem Abschlag spielen die 2 linkesten Bälle gegen die 2 rechtesten Bälle. Ausgangspunkt ist die Mitte des Fairways mit Blick zurück zum Abschlag.</li>
+      <li><strong>Teamzahl:</strong> Niedrigerer Score zuerst (4&5 = 45).</li>
+      <li><strong>Punktewertung:</strong> Differenz der Teamzahlen → ans bessere Team.</li>
+      <li><strong>Bonuswertung:</strong> Je Birdie im Team = 1 Bonuspunkt. Je Eagle oder besser im Team = 2 Bonuspunkte.</li>
+      <li><strong>Teamzahl drehen:</strong> Hat ein Team mindestens 1 Bonuspunkt, wird die gegnerische Teamzahl umgedreht.</li>
+      <li><strong>Bonus-Multiplikator:</strong> Gewinnt ein Team nach allen Drehungen, wird die Differenz mit den Bonuspunkten dieses Teams multipliziert: 1 = nur drehen, 2 = ×2, 3 = ×3, 4 = ×4.</li>
+      <li><strong>Sonderpunkte nur Brutto:</strong> Albatross (2 auf Par 5) = +50 Punkte für den Spieler. Hole-in-One (1 auf Par 3 oder Par 4) = +100 Punkte für den Spieler. Netto-Vorgaben erzeugen keine Sonderpunkte.</li>
+      <li><strong>Loch 17 & 18:</strong> Der Spieler mit den wenigsten Punkten vor dem jeweiligen Loch wählt den Multiplikator (×1/×2/×3/×4).</li>
+    </ol>
   </details>
 
   <div class="setup-card" id="setupCard">
@@ -899,7 +1195,6 @@
         <select id="savedCourseSelect" aria-label="Gespeicherten Platz auswählen"></select>
         <div class="course-library-actions">
           <button class="btn btn-small" id="newCourseBtn" type="button">Neuer Platz</button>
-          <button class="btn btn-ghost btn-small" id="deleteCourseBtn" type="button">Löschen</button>
         </div>
       </div>
       <input type="text" id="courseName" placeholder="Name des Platzes (z.B. GC Föhrenwald)">
@@ -912,7 +1207,7 @@
       </details>
       <div class="course-edit-actions">
         <button class="btn" id="saveCourseBtn" type="button">Scorekarte speichern</button>
-        <button class="btn btn-ghost" id="editCourseBtn" type="button">Scorekarte bearbeiten</button>
+        <button class="btn btn-ghost" id="editCourseBtn" type="button">Loch-Details bearbeiten</button>
       </div>
     </div>
 
@@ -923,7 +1218,7 @@
           <tr>
             <th></th>
             <th>Name</th>
-            <th>HCP (Spv.)</th>
+            <th>HCP (SPV.)</th>
           </tr>
         </thead>
         <tbody id="playerRows"></tbody>
@@ -1050,21 +1345,6 @@ function hasSavedCurrentCourse() {
   return JSON.stringify(cloneCourse(state.course)) === JSON.stringify(cloneCourse(state.savedCourses[name]));
 }
 
-function cleanupPartialSavedCourseNames() {
-  const names = savedCourseNames();
-  const toDelete = new Set();
-  names.forEach(name => {
-    const longerMatch = names.find(other =>
-      other !== name &&
-      other.startsWith(name) &&
-      JSON.stringify(state.savedCourses[other].holes) === JSON.stringify(state.savedCourses[name].holes)
-    );
-    if (longerMatch) toDelete.add(name);
-  });
-  toDelete.forEach(name => delete state.savedCourses[name]);
-  return toDelete.size > 0;
-}
-
 async function saveState() {
   try {
     if (window.storage && window.storage.set) {
@@ -1106,11 +1386,56 @@ function effectiveStroke(playerIdx, holeIdx) {
   return Number(raw) - vorgabe;
 }
 
+function grossStroke(playerIdx, holeIdx) {
+  const raw = state.holes[holeIdx].strokes[playerIdx];
+  if (raw === null || raw === '') return null;
+  return Number(raw);
+}
+
 function isBirdie(playerIdx, holeIdx) {
+  return scoreBonusCredits(playerIdx, holeIdx) > 0;
+}
+
+function scoreBonusCredits(playerIdx, holeIdx) {
   const stroke = effectiveStroke(playerIdx, holeIdx);
-  if (stroke === null) return false;
+  if (stroke === null) return 0;
   const par = getCourse().holes[holeIdx].par;
-  return stroke < par;
+  if (stroke <= par - 2) return 2;
+  if (stroke === par - 1) return 1;
+  return 0;
+}
+
+function bonusSymbols(credits) {
+  if (credits >= 2) return '🦅';
+  if (credits === 1) return '🐦';
+  return '';
+}
+
+function playerBonusSymbol(playerIdx, holeIdx) {
+  return bonusSymbols(scoreBonusCredits(playerIdx, holeIdx));
+}
+
+function teamBonusSymbols(playerIndexes, holeIdx) {
+  return playerIndexes.map(i => playerBonusSymbol(i, holeIdx)).filter(Boolean).join('');
+}
+
+function specialBonusForPlayer(playerIdx, holeIdx) {
+  const gross = grossStroke(playerIdx, holeIdx);
+  if (gross === null) return 0;
+  const par = getCourse().holes[holeIdx].par;
+  if (gross === 1 && (par === 3 || par === 4)) return 100;
+  if (gross === 2 && par === 5) return 50;
+  return 0;
+}
+
+function specialBonusesForHole(holeIdx) {
+  return state.players
+    .map((player, playerIdx) => ({
+      playerIdx,
+      name: player.name || `Spieler ${playerIdx + 1}`,
+      points: specialBonusForPlayer(playerIdx, holeIdx)
+    }))
+    .filter(item => item.points > 0);
 }
 
 function calculateHole(holeIdx) {
@@ -1145,43 +1470,53 @@ function calculateHole(holeIdx) {
 
   const sL = teamL.map(i => effectiveStroke(i, holeIdx));
   const sR = teamR.map(i => effectiveStroke(i, holeIdx));
-  const birdiesL = teamL.filter(i => isBirdie(i, holeIdx)).length;
-  const birdiesR = teamR.filter(i => isBirdie(i, holeIdx)).length;
+  const bonusL = teamL.reduce((sum, i) => sum + scoreBonusCredits(i, holeIdx), 0);
+  const bonusR = teamR.reduce((sum, i) => sum + scoreBonusCredits(i, holeIdx), 0);
+  const birdiesL = bonusL;
+  const birdiesR = bonusR;
+  const bonusSymbolsL = teamBonusSymbols(teamL, holeIdx);
+  const bonusSymbolsR = teamBonusSymbols(teamR, holeIdx);
   const numL_orig = buildNumber(sL[0], sL[1]);
   const numR_orig = buildNumber(sR[0], sR[1]);
 
-  let winningTeam, birdiesWin;
-  if (numL_orig < numR_orig) {
-    winningTeam = 'L'; birdiesWin = birdiesL;
-  } else if (numR_orig < numL_orig) {
-    winningTeam = 'R'; birdiesWin = birdiesR;
+  let numL_final = numL_orig, numR_final = numR_orig;
+  let reversedL = false, reversedR = false;
+
+  if (bonusR >= 1) {
+    numL_final = reverseNumber(sL[0], sL[1]);
+    reversedL = true;
+  }
+  if (bonusL >= 1) {
+    numR_final = reverseNumber(sR[0], sR[1]);
+    reversedR = true;
+  }
+
+  let winningTeam;
+  if (numL_final < numR_final) {
+    winningTeam = 'L';
+  } else if (numR_final < numL_final) {
+    winningTeam = 'R';
   } else {
     return {
       ready: true, tie: true,
       numL_orig, numR_orig,
-      numL_final: numL_orig, numR_final: numR_orig,
+      numL_final, numR_final,
       birdiesL, birdiesR,
+      bonusSymbolsL, bonusSymbolsR,
+      specialBonuses: specialBonusesForHole(holeIdx),
       points: 0, winningTeam: null,
-      reversed: false, doubled: false
+      reversed: reversedL || reversedR, reversedL, reversedR,
+      bonusMultiplier: 1
     };
-  }
-
-  let numL_final = numL_orig, numR_final = numR_orig;
-  let reversed = false, doubled = false;
-  if (birdiesWin >= 1) {
-    reversed = true;
-    if (winningTeam === 'L') numR_final = reverseNumber(sR[0], sR[1]);
-    else numL_final = reverseNumber(sL[0], sL[1]);
   }
 
   const winNum = winningTeam === 'L' ? numL_final : numR_final;
   const loseNum = winningTeam === 'L' ? numR_final : numL_final;
   let diff = Math.abs(loseNum - winNum);
 
-  if (birdiesWin >= 2) {
-    doubled = true;
-    diff *= 2;
-  }
+  const winnerBonus = winningTeam === 'L' ? bonusL : bonusR;
+  const bonusMultiplier = Math.max(1, Math.min(winnerBonus, 4));
+  diff *= bonusMultiplier;
 
   diff *= (hole.multiplier || 1);
 
@@ -1190,9 +1525,13 @@ function calculateHole(holeIdx) {
     numL_orig, numR_orig,
     numL_final, numR_final,
     birdiesL, birdiesR,
+    bonusSymbolsL, bonusSymbolsR,
+    specialBonuses: specialBonusesForHole(holeIdx),
     points: diff,
     winningTeam,
-    reversed, doubled,
+    reversed: reversedL || reversedR,
+    reversedL, reversedR,
+    bonusMultiplier,
     multiplier: hole.multiplier || 1
   };
 }
@@ -1200,6 +1539,9 @@ function calculateHole(holeIdx) {
 function totalPoints() {
   const totals = state.players.map(() => 0);
   for (let h = 0; h < 18; h++) {
+    state.players.forEach((_, i) => {
+      totals[i] += specialBonusForPlayer(i, h);
+    });
     const r = calculateHole(h);
     if (!r.ready || r.tie) continue;
     state.players.forEach((_, i) => {
@@ -1209,9 +1551,12 @@ function totalPoints() {
   return totals;
 }
 
-function totalAfterHole16() {
+function totalAfterHole(holeLimit) {
   const totals = state.players.map(() => 0);
-  for (let h = 0; h < 16; h++) {
+  for (let h = 0; h < holeLimit; h++) {
+    state.players.forEach((_, i) => {
+      totals[i] += specialBonusForPlayer(i, h);
+    });
     const r = calculateHole(h);
     if (!r.ready || r.tie) continue;
     state.players.forEach((_, i) => {
@@ -1257,18 +1602,18 @@ function render() {
 
 function renderCourseLibrary() {
   const select = document.getElementById('savedCourseSelect');
-  const deleteBtn = document.getElementById('deleteCourseBtn');
   const newBtn = document.getElementById('newCourseBtn');
   const saveBtn = document.getElementById('saveCourseBtn');
   const editBtn = document.getElementById('editCourseBtn');
   const status = document.getElementById('courseLibraryStatus');
   const details = document.querySelector('details.course-details');
-  if (!select || !deleteBtn || !newBtn || !saveBtn || !editBtn || !status) return;
+  if (!select || !newBtn || !saveBtn || !editBtn || !status) return;
 
   const names = savedCourseNames();
   const activeName = courseStorageName();
   const courseValid = validateCourse().valid;
   const isSaved = hasSavedCurrentCourse();
+  const existsSaved = Boolean(activeName && state.savedCourses[activeName]);
   select.innerHTML = '';
 
   const emptyOption = document.createElement('option');
@@ -1284,11 +1629,20 @@ function renderCourseLibrary() {
     select.appendChild(option);
   });
 
-  deleteBtn.disabled = !activeName || !state.savedCourses[activeName];
-  saveBtn.disabled = !activeName || !courseValid;
-  status.textContent = isSaved
-    ? `Gespeichert: ${activeName}`
-    : 'Nicht gespeichert. Bitte vollständigen Namen und gültige Lochdaten prüfen.';
+  if (isSaved) {
+    saveBtn.textContent = 'Gespeichert';
+    saveBtn.disabled = true;
+    status.textContent = `Gespeichert: ${activeName}`;
+    status.className = 'hint course-status saved';
+  } else {
+    saveBtn.textContent = existsSaved ? 'Scorekarte aktualisieren' : 'Scorekarte speichern';
+    saveBtn.disabled = !activeName || !courseValid;
+    const hasCourseError = !(activeName && courseValid);
+    status.textContent = hasCourseError
+      ? 'Nicht gespeichert. Bitte Namen und Lochdaten prüfen.'
+      : (existsSaved ? 'Änderungen vorhanden. Bitte aktualisieren.' : 'Noch nicht gespeichert.');
+    status.className = `hint course-status ${hasCourseError ? 'error' : 'pending'}`;
+  }
 
   select.onchange = () => {
     const selected = select.value;
@@ -1309,6 +1663,7 @@ function renderCourseLibrary() {
       renderCourseLibrary();
       return;
     }
+    if (details) details.open = false;
     render();
     saveState();
   };
@@ -1318,14 +1673,6 @@ function renderCourseLibrary() {
     document.getElementById('courseName').focus();
   };
 
-  deleteBtn.onclick = () => {
-    const name = courseStorageName();
-    if (!name || !state.savedCourses[name]) return;
-    if (!confirm(`Gespeicherten Platz "${name}" löschen?`)) return;
-    delete state.savedCourses[name];
-    renderCourseLibrary();
-    saveState();
-  };
 }
 
 function renderCourseEdit() {
@@ -1378,6 +1725,11 @@ function renderCourseEdit() {
       const val = parseInt(e.target.value) || 0;
       state.course.holes[hi][field] = val;
       saveState();
+      renderCourseSummary();
+      renderCourseLibrary();
+      renderCurrentHole();
+    };
+    inp.onblur = () => {
       renderCourseEdit();
       renderCourseSummary();
       renderCourseLibrary();
@@ -1456,7 +1808,7 @@ function renderScoreboard() {
     tile.innerHTML = `
       <div class="score-name">${p.name || 'Spieler ' + (i+1)}</div>
       <div class="score-points">${totals[i]}</div>
-      <div class="score-label">Pkt · HCP ${p.hcp}</div>
+      <div class="score-label">PUNKTE · HCP ${p.hcp}</div>
     `;
     board.appendChild(tile);
   });
@@ -1532,7 +1884,7 @@ function renderCurrentHole() {
           <th>Spieler</th>
           <th class="center">Schläge</th>
           <th class="center">Team</th>
-          <th class="center">Birdie</th>
+          <th class="center">Bonus</th>
         </tr>
       </thead>
       <tbody id="holePlayersBody"></tbody>
@@ -1546,12 +1898,13 @@ function renderCurrentHole() {
   state.players.forEach((p, pi) => {
     const teamClass = hole.teams[pi] === 'L' ? 'team-left' : (hole.teams[pi] === 'R' ? 'team-right' : '');
     const vorgabe = strokesForPlayerOnHole(pi, holeIdx);
-    const birdie = isBirdie(pi, holeIdx);
     const selectedTeam = hole.teams[pi];
     const leftTakenByOthers = hole.teams.filter((team, idx) => idx !== pi && team === 'L').length;
     const rightTakenByOthers = hole.teams.filter((team, idx) => idx !== pi && team === 'R').length;
     const canChooseLeft = selectedTeam === 'L' || leftTakenByOthers < 2;
     const canChooseRight = selectedTeam === 'R' || rightTakenByOthers < 2;
+    const bonus = scoreBonusCredits(pi, holeIdx);
+    const specialBonus = specialBonusForPlayer(pi, holeIdx);
     const tr = document.createElement('tr');
     tr.className = teamClass;
     tr.innerHTML = `
@@ -1572,21 +1925,24 @@ function renderCurrentHole() {
           ${canChooseRight ? `<option value="R" ${selectedTeam === 'R' ? 'selected' : ''}>Rechts</option>` : ''}
         </select>
       </td>
-      <td class="birdie-indicator">${birdie ? '🐦' : '—'}</td>
+      <td class="birdie-indicator">
+        ${bonusSymbols(bonus) || '—'}
+        ${specialBonus ? `<span class="special-bonus">+${specialBonus}</span>` : ''}
+      </td>
     `;
     tbody.appendChild(tr);
   });
 
   if (isBonus) {
     const container2 = card.querySelector('#multiPickContainer');
-    const after16 = totalAfterHole16();
-    const minPts = Math.min(...after16);
+    const totalsBeforeCurrentHole = totalAfterHole(holeIdx);
+    const minPts = Math.min(...totalsBeforeCurrentHole);
     const losers = state.players
-      .map((p, i) => after16[i] === minPts ? p.name : null)
+      .map((p, i) => totalsBeforeCurrentHole[i] === minPts ? p.name : null)
       .filter(Boolean);
     container2.innerHTML = `
       <div class="multiplier-pick">
-        <div class="multiplier-label">Multiplikator (${losers.join(' / ') || 'Verlierer nach Loch 16'} entscheidet)</div>
+        <div class="multiplier-label">Multiplikator (${losers.join(' / ') || 'Spieler mit den wenigsten Punkten'} entscheidet vor Loch ${holeIdx + 1})</div>
         <div class="multiplier-buttons">
           ${[1, 2, 3, 4].map(m => `
             <label class="${hole.multiplier === m ? 'selected' : ''}">
@@ -1640,6 +1996,39 @@ function renderCurrentHole() {
   });
 }
 
+function renderTeamNumber(finalNumber, originalNumber, wasReversed) {
+  if (wasReversed && finalNumber !== originalNumber) {
+    return `
+      <div class="team-result-number reversed">${finalNumber}</div>
+      <div class="team-result-original">${originalNumber}</div>
+    `;
+  }
+  return `<div class="team-result-number">${finalNumber}</div>`;
+}
+
+function renderSpecialBonuses(r) {
+  if (!r.specialBonuses || !r.specialBonuses.length) return '';
+  const text = r.specialBonuses
+    .map(item => `${item.name} +${item.points}`)
+    .join(' · ');
+  return `<div class="result-explanation special-result">Sonderpunkte Brutto: ${text}</div>`;
+}
+
+function resultExplanation(r) {
+  let explanation = '';
+  if (r.reversed && r.bonusMultiplier > 1) {
+    explanation = `${r.bonusMultiplier} Bonuspunkte → gegnerische Teamzahl umgedreht & Differenz ×${r.bonusMultiplier}`;
+  } else if (r.reversed) {
+    explanation = `Bonuspunkt → gegnerische Teamzahl umgedreht`;
+  } else {
+    explanation = `Differenz der Teamzahlen`;
+  }
+  if (r.multiplier > 1) {
+    explanation += ` · Loch-Multiplikator ×${r.multiplier}`;
+  }
+  return explanation;
+}
+
 function renderResult(r) {
   if (r.tie) {
     return `
@@ -1647,64 +2036,45 @@ function renderResult(r) {
         <div class="result-numbers">
           <div class="team-result">
             <div class="team-result-label">Team Links</div>
-            <div class="team-result-number">${r.numL_orig}</div>
-            ${r.birdiesL > 0 ? `<div class="team-result-birdies">${'🐦'.repeat(r.birdiesL)}</div>` : ''}
+            ${renderTeamNumber(r.numL_final, r.numL_orig, r.reversedL)}
+            ${r.bonusSymbolsL ? `<div class="team-result-birdies">${r.bonusSymbolsL}</div>` : ''}
           </div>
           <div class="team-result">
             <div class="team-result-label">Team Rechts</div>
-            <div class="team-result-number">${r.numR_orig}</div>
-            ${r.birdiesR > 0 ? `<div class="team-result-birdies">${'🐦'.repeat(r.birdiesR)}</div>` : ''}
+            ${renderTeamNumber(r.numR_final, r.numR_orig, r.reversedR)}
+            ${r.bonusSymbolsR ? `<div class="team-result-birdies">${r.bonusSymbolsR}</div>` : ''}
           </div>
         </div>
         <div class="result-summary tie">
           <div class="result-summary-points">Unentschieden</div>
           <div class="result-explanation">0 Punkte für beide Teams</div>
+          ${renderSpecialBonuses(r)}
         </div>
       </div>
     `;
   }
 
   const winLeft = r.winningTeam === 'L';
-  const leftReversed = !winLeft && r.reversed;
-  const rightReversed = winLeft && r.reversed;
-
-  let explanation = '';
-  if (r.doubled) {
-    explanation = `2 Birdies → Gegnerzahl umgedreht & Differenz verdoppelt`;
-  } else if (r.reversed) {
-    explanation = `Birdie → Gegnerzahl umgedreht`;
-  } else {
-    explanation = `Differenz der Teamzahlen`;
-  }
-  if (r.multiplier > 1) {
-    explanation += ` · Multiplikator ×${r.multiplier}`;
-  }
+  const explanation = resultExplanation(r);
 
   return `
     <div class="hole-result">
       <div class="result-numbers">
         <div class="team-result ${winLeft ? 'winner' : ''}">
           <div class="team-result-label">Team Links${winLeft ? ' · 🏆' : ''}</div>
-          ${leftReversed
-            ? `<div class="team-result-number reversed">${r.numL_final}</div>
-               <div class="team-result-original">${r.numL_orig}</div>`
-            : `<div class="team-result-number">${r.numL_final}</div>`
-          }
-          ${r.birdiesL > 0 ? `<div class="team-result-birdies">${'🐦'.repeat(r.birdiesL)}</div>` : ''}
+          ${renderTeamNumber(r.numL_final, r.numL_orig, r.reversedL)}
+          ${r.bonusSymbolsL ? `<div class="team-result-birdies">${r.bonusSymbolsL}</div>` : ''}
         </div>
         <div class="team-result ${!winLeft ? 'winner' : ''}">
           <div class="team-result-label">Team Rechts${!winLeft ? ' · 🏆' : ''}</div>
-          ${rightReversed
-            ? `<div class="team-result-number reversed">${r.numR_final}</div>
-               <div class="team-result-original">${r.numR_orig}</div>`
-            : `<div class="team-result-number">${r.numR_final}</div>`
-          }
-          ${r.birdiesR > 0 ? `<div class="team-result-birdies">${'🐦'.repeat(r.birdiesR)}</div>` : ''}
+          ${renderTeamNumber(r.numR_final, r.numR_orig, r.reversedR)}
+          ${r.bonusSymbolsR ? `<div class="team-result-birdies">${r.bonusSymbolsR}</div>` : ''}
         </div>
       </div>
       <div class="result-summary">
         <div class="result-summary-points">+${r.points} Punkte</div>
         <div class="result-explanation">${explanation}</div>
+        ${renderSpecialBonuses(r)}
       </div>
     </div>
   `;
@@ -1779,19 +2149,8 @@ document.getElementById('resetBtn').onclick = async () => {
   if (!state.course || !Array.isArray(state.course.holes) || state.course.holes.length !== 18) {
     state.course = createEmptyCourse();
   }
-  if (cleanupPartialSavedCourseNames()) {
-    await saveState();
-  }
   render();
 })();
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(err => {
-      console.warn('Service worker registration failed', err);
-    });
-  });
-}
 </script>
 </body>
 </html>
